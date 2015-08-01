@@ -1,0 +1,17 @@
+{
+  "name": "availability",
+  "version": "1.0.0",
+  "description": "Gives ticket availability",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Aswin",
+  "license": "ISC",
+  "private": true,
+  "dependencies": {
+    "express": "^4.13.2",
+    "pg": "^4.4.0"
+  }
+}

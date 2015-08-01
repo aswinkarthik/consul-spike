@@ -1,0 +1,13 @@
+{
+  "service": {
+    "name": "payment",
+    "tags": [
+      "node"
+    ],
+    "port": 4000,
+    "check": {
+      "script": "curl localhost:4000/ping >/dev/null 2>&1",
+      "interval": "10s"
+    }
+  }
+}

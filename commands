@@ -1,0 +1,4 @@
+consul agent -server -bootstrap-expect 1 -data-dir /tmp/data -config-dir=/data -bind 10.0.0.110 -node=agent-one 
+consul agent -join 10.0.0.110 -data-dir /tmp/data -config-dir /data -node=agent-three -bind 10.0.0.106
+consul agent -join 10.0.0.110 -data-dir /tmp/data -config-dir /data -node=agent-two -bind 10.0.0.108
+consul agent -join 10.0.0.110 -data-dir /tmp/data -config-dir /data -node=agent-four -bind 10.0.0.109

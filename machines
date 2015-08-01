@@ -1,0 +1,4 @@
+10.0.0.109 - db
+10.0.0.106 - availability-2
+10.0.0.110 - availability-1 - master
+10.0.0.108 - payment

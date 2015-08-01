@@ -1,0 +1,13 @@
+{
+  "service": {
+    "name": "availability",
+    "tags": [
+      "node"
+    ],
+    "port": 3000,
+    "check": {
+      "script": "curl localhost:3000/ping >/dev/null 2>&1",
+      "interval": "10s"
+    }
+  }
+}

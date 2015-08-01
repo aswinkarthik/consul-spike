@@ -1,0 +1,13 @@
+{
+  "service": {
+    "name": "front-end",
+    "tags": [
+      "node"
+    ],
+    "port": 5000,
+    "check": {
+      "script": "curl localhost:5000/ping >/dev/null 2>&1",
+      "interval": "10s"
+    }
+  }
+}
