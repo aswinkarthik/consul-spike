@@ -1,4 +1,23 @@
-consul agent -server -bootstrap-expect 1 -data-dir /tmp/data -config-dir=/data -bind 10.0.0.110 -node=agent-one 
-consul agent -join 10.0.0.110 -data-dir /tmp/data -config-dir /data -node=agent-three -bind 10.0.0.106
-consul agent -join 10.0.0.110 -data-dir /tmp/data -config-dir /data -node=agent-two -bind 10.0.0.108
-consul agent -join 10.0.0.110 -data-dir /tmp/data -config-dir /data -node=agent-four -bind 10.0.0.109
+consul agent -server -bootstrap-expect 1 -data-dir /tmp/data -config-dir=/data/configs -bind 192.168.1.100 -node=agent-one 
+consul agent -join 192.168.1.100 -data-dir /tmp/data -config-dir /data/configs -node=agent-two -bind 192.168.1.101
+consul agent -join 192.168.1.100 -data-dir /tmp/data -config-dir /data/configs -node=agent-three -bind 192.168.1.102
+consul agent -join 192.168.1.100 -data-dir /tmp/data -config-dir /data/configs -node=agent-four -bind 192.168.1.103
+
+
+
+dig @127.0.0.1 -p 8600 agent-one.node.consul 
+curl localhost:8500/v1/catalog/nodes
+dig agent-one.node.consul +short
+
+
+rm -rf vagrant/data/availability-1/*
+
+mkdir -p vagrant/data/availability-1/app
+mkdir -p vagrant/data/availability-1/configs/
+
+
+cp -r availability/* vagrant/data/availability-1/app/
+cp availability/availability.json vagrant/data/availability-1/configs/
+
+
+consul-template/bin/consul-template -consul localhost:8500 -template "haconfig.ctmpl:/etc/haproxy/haproxy.cfg:/usr/sbin/haproxy restart" -retry 30s

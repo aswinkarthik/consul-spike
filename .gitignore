@@ -60,4 +60,5 @@ Temporary Items
 
 ### Vagrant ###
 vagrant/.vagrant/
+vagrant/data/
 
